@@ -1,0 +1,23 @@
+.calc{
+    width: 300px;
+    margin: 50px auto;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+
+.calc .calc_button{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap:10px;
+    padding: 10px;
+}
+.calc .calc_display{
+    text-align: right;
+    background-color: black;
+    padding: 1rem;
+    color: white;
+}
+.calc .calc__zero-button{
+    grid-column:  span 2;
+}
