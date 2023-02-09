@@ -90,6 +90,13 @@ const Calc = () => {
     };
 
     if (isOperator) {
+      if (buttonText === "=") {
+        const result = calculateResult(previous);
+        setCurrent(result);
+        setPrevious("0");
+        return;
+      }
+
       if (buttonText === "clear") {
         setCurrent("0");
         setPrevious("0");
@@ -112,9 +119,9 @@ const Calc = () => {
       setPrevious((prev) => {
         if (current === "0") return prev;
 
-        if (prev !== 0) {
-          const result = "hello " + prev;
-          return result;
+        if (prev !== "0") {
+          const result = calculateResult(prev);
+          return result + buttonText;
         }
 
         return current + buttonText;
@@ -133,7 +140,9 @@ const Calc = () => {
     <div className="calc">
       <div className="calc_display">
         <div className="calc_display_current">{current}</div>
-        <div className="calc_display_previous">{previous}</div>
+        <div className="calc_display_previous">
+          {previous === "0" ? null : previous}
+        </div>
       </div>
       <div className="calc_button">
         {buttonCon.map(({ text, isOperator, className }) => (

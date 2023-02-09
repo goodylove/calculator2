@@ -10,6 +10,8 @@ const handleCalculation = (firstOperand, current, operators) => {
       return firstOperand * current;
     case "/":
       return firstOperand / current;
+    default:
+      return;
   }
 };
 export default handleCalculation;
