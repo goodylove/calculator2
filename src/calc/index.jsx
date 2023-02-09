@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Button from "./button/index";
+
+import handleCalculation from "./helper";
 import "./styles.css";
 
 const Calc = () => {
@@ -78,6 +80,14 @@ const Calc = () => {
 
   const handleClick = (buttonText, isOperator) => {
     console.log(buttonText, isOperator);
+
+    const calculateResult = (pastOperation) => {
+      const firstOperand = pastOperation.slice(0, -1);
+      const operators = pastOperation.slice(-1);
+
+      const result = handleCalculation(+firstOperand, +current, operators);
+      return result;
+    };
 
     if (isOperator) {
       if (buttonText === "clear") {
